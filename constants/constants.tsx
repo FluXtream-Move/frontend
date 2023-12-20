@@ -10,31 +10,34 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
   },
   {
     title: 'Send Stream',
-    path: '/projects',
+    path: '/send',
     icon: <Icon icon="lucide:send-horizontal" width="24" height="24" />,
     submenu: true,
     subMenuItems: [
       { 
         title: 'Single', 
-        path: '/projects',
+        path: '/single',
         icon: <Icon icon="lucide:send-horizontal" width="24" height="24" />, 
       },
-      { title: 'Multiple', path: '/projects/web-design' },
+      { 
+        title: 'Multiple', 
+        path: '/multiple', 
+      },
     ],
   },
   {
     title: 'Wrap',
-    path: '/messages',
+    path: '/wrap',
     icon: <Icon icon="lucide:badge-plus" width="24" height="24" />,
   },
   {
     title: 'History',
-    path: '/help',
+    path: '/history',
     icon: <Icon icon="lucide:history" width="24" height="24" />,
   },
   {
     title: 'Address Book',
-    path: '/help',
+    path: '/address-book',
     icon: <Icon icon="lucide:book-open-text" width="24" height="24" />,
   },
   {
