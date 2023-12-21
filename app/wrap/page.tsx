@@ -8,7 +8,7 @@ function page() {
     <div className="flex flex-col">
       <div className="relative">
         <button className="bg-purple-400 text-gray-700 py-2 px-4 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500" role="button" aria-expanded="false" aria-haspopup="listbox">APTOS</button>
-        <input className="bg-purple-600 text-gray-700 py-2 px-4 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500" aria-invalid="false" aria-hidden="true" tabindex="-1" value="" />
+        <input className="bg-purple-600 text-gray-700 py-2 px-4 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500" aria-invalid="false" aria-hidden="true" tabIndex={-1} value="" />
       </div>
     </div>
     <div className="flex items-center justify-center">
