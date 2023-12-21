@@ -9,10 +9,26 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import useScroll from '@/hooks/use-scroll';
 import { cn } from '@/lib/utils';
 import Logo from "../public/logo.svg"
+import dynamic from 'next/dynamic';
 
 const Header = () => {
   const scrolled = useScroll(5);
   const selectedLayout = useSelectedLayoutSegment();
+
+  const WalletButtons = dynamic(
+  async () => {
+    const { WalletButtons } = await import("./wallet");
+    return { default: WalletButtons };
+  },
+  {
+    loading: () => (
+      <div className="nes-btn is-primary opacity-50 cursor-not-allowed">
+        Loading...
+      </div>
+    ),
+    ssr: false,
+  }
+);
 
   return (
     <div
@@ -37,9 +53,7 @@ const Header = () => {
 
         <div className="hidden md:block">
         <div className='p-2'>
-        <button type="button" className="text-white bg-blue-400 dark:bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-        Connect with Wallet
-        </button> 
+        <WalletButtons />
         </div>
 
         </div>
