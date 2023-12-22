@@ -1,14 +1,16 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import ContractExecutor from '../../components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
-
+import { useSearchParams } from 'next/navigation'
+ 
 const SinglePage = () => {
   const { width, height } = useWindowSize()
+  const searchParams = useSearchParams()
   const [receiver, setReceiver] = useState('');
   const [token, setToken] = useState('Aptos');
   const [flow, setFlow] = useState('');
@@ -23,6 +25,12 @@ const SinglePage = () => {
     console.log('Function Arguments:', functionArguments);
      return <ContractExecutor functionName={functionName} functionArguments={functionArguments} />
   }
+  useEffect(() => {
+    setReceiver(searchParams.get('receiver')??"");
+    setToken(searchParams.get('token')??"Aptos");
+    setFlow(searchParams.get('flow')??"");
+    setDuration(searchParams.get('duration')??"");
+  }, []);
   return (
     
     <div className='flex items-center justify-center min-h-screen'>
