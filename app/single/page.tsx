@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import ContractExecutor from '../../components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 const SinglePage = () => {
+  const { width, height } = useWindowSize()
   const [receiver, setReceiver] = useState('');
   const [token, setToken] = useState('Aptos');
   const [flow, setFlow] = useState('');
@@ -24,6 +26,10 @@ const SinglePage = () => {
   return (
     
     <div className='flex items-center justify-center min-h-screen'>
+      <Confetti
+      width={width}
+      height={height}
+    />
       <div className="bg-gray-900 text-white border border-gray-800 rounded-xl bg-gradient-to-b from-transparent to-gray-900 overflow-hidden p-7 max-w-md w-full relative">
         <button className="inline-flex items-center justify-center box-border border-0 m-0 cursor-pointer select-none align-top appearance-none text-green-600 bg-green-100 rounded-lg transition-all duration-300 ease-in-out p-2 mr-2 mb-8 self-start pointer-events-none">Send Stream</button>
         <div className="absolute top-0 right-7">
