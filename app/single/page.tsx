@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import ContractExecutor from '../../components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-
+import Confetti from 'react-confetti'
 
 const SinglePage = () => {
   const [receiver, setReceiver] = useState('');
@@ -23,12 +23,17 @@ const SinglePage = () => {
   return (
     
     <div className='flex items-center justify-center min-h-screen'>
+      <Confetti
+      width={window.screen.width}
+      height={window.screen.height}
+    />
       <div className="bg-gray-900 text-white border border-gray-800 rounded-xl bg-gradient-to-b from-transparent to-gray-900 overflow-hidden p-7 max-w-md w-full relative">
         <button className="inline-flex items-center justify-center box-border border-0 m-0 cursor-pointer select-none align-top appearance-none text-green-600 bg-green-100 rounded-lg transition-all duration-300 ease-in-out p-2 mr-2 mb-8 self-start pointer-events-none">Send Stream</button>
         <div className="absolute top-0 right-7">
           <div className="bg-blue-600 rounded-bl-lg h-8 w-8 flex items-center justify-center shadow-md">
             <div className="text-xl font-bold text-gray-900">A</div>
           </div>
+          
         </div>
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col">
