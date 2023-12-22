@@ -43,7 +43,7 @@ const ContractExecutor = ({ functionName, functionArguments }: { functionName: s
         type="primary"
         style={{ height: '40px', backgroundColor: '#3f67ff', marginTop: '1rem' }}
       >
-        Execute {functionName}
+        Send
       </Button>
     </Spin>
   );
