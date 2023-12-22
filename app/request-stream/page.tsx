@@ -2,6 +2,7 @@
 import { parse } from 'path';
 import React from 'react'
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import {
     useWallet,
   } from "@aptos-labs/wallet-adapter-react";
@@ -29,7 +30,21 @@ const Page = () => {
     const [showQR, setShowQR] = useState(false);
     // ... other state variables and functions
   
-    
+    const WalletButtons = dynamic(
+        async () => {
+          const { WalletButtons } = await import("../../components/wallet");
+          return { default: WalletButtons };
+        },
+        {
+          loading: () => (
+            <div className="nes-btn is-primary opacity-50 cursor-not-allowed">
+              Loading...
+            </div>
+          ),
+          ssr: false,
+        }
+      );
+      
   
     const handleCloseQR = () => {
       setShowQR(false); // Close QR code modal
@@ -45,7 +60,7 @@ const Page = () => {
         setShowQR(true);
         // Parse flow and duration as u64
        let parsedFlow = parseFloat(flow);
-       parsedFlow=parsedFlow*1000;
+       parsedFlow=parsedFlow;
        const parsedDuration = parseInt(duration, 10);
        const functionArguments=[account?.address,parsedFlow,parsedDuration];
        console.log('Function Arguments:', functionArguments);
@@ -109,8 +124,12 @@ const Page = () => {
                 <div className="text-gray-700 text-lg font-bold mr-2">/ second</div>
               </div>
               <div className="flex items-center justify-center mt-4">
+                {account?.address ?
                 <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={handleStream} >Request payment</button>
-              </div>
+                    :
+                    <WalletButtons />
+            }
+                </div>
             </div>
           </div>
         </div>
