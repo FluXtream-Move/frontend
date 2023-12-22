@@ -7,7 +7,6 @@ function page() {
         <ContractExecutor functionName={"0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::IsRecieveStreamPresent"} functionArguments={["0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100",11,11]} />
         <GetDataFromContract functionName={"0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::IsRecieveStreamPresent"} functionArguments={["0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100"]} />
         <GetDataFromContract functionName={"0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::getListOfStreams"} functionArguments={["0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100"]} />
-        <GetDataFromContract functionName={"0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::getListOfRecieveStreams"} functionArguments={["0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100"]} />
         
     </div>
   )
