@@ -5,12 +5,13 @@ import { Icon } from '@iconify/react';
 import ContractExecutor from '../../components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import Confetti from 'react-confetti'
-
+import useWindowSize from 'react-use/lib/useWindowSize'
 const SinglePage = () => {
   const [receiver, setReceiver] = useState('');
   const [token, setToken] = useState('Aptos');
   const [flow, setFlow] = useState('');
   const [duration , setDuration] = useState('');
+  const { width, height } = useWindowSize()
   const handleStream = () => {
     const functionName = "0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::CreateStream";
     const functionArguments=[receiver,flow,duration];
@@ -24,8 +25,8 @@ const SinglePage = () => {
     
     <div className='flex items-center justify-center min-h-screen'>
       <Confetti
-      width={window.screen.width}
-      height={window.screen.height}
+      width={width}
+      height={height}
     />
       <div className="bg-gray-900 text-white border border-gray-800 rounded-xl bg-gradient-to-b from-transparent to-gray-900 overflow-hidden p-7 max-w-md w-full relative">
         <button className="inline-flex items-center justify-center box-border border-0 m-0 cursor-pointer select-none align-top appearance-none text-green-600 bg-green-100 rounded-lg transition-all duration-300 ease-in-out p-2 mr-2 mb-8 self-start pointer-events-none">Send Stream</button>
