@@ -15,16 +15,20 @@ const SinglePage = () => {
   const [token, setToken] = useState('Aptos');
   const [flow, setFlow] = useState('');
   const [duration , setDuration] = useState('');
-  const handleStream = () => {
-     // Parse flow and duration as u64
-    const parsedFlow = parseInt(flow, 10);
+  const parsedFlow = parseInt(flow, 10);
     const parsedDuration = parseInt(duration, 10);
     const functionName = "0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::CreateStream";
     const functionArguments=[receiver,parsedFlow,parsedDuration];
-    console.log('Function Name:', functionName);
-    console.log('Function Arguments:', functionArguments);
-     return <ContractExecutor functionName={functionName} functionArguments={functionArguments} />
-  }
+  // const handleStream = () => {
+  //    // Parse flow and duration as u64
+  //   const parsedFlow = parseInt(flow, 10);
+  //   const parsedDuration = parseInt(duration, 10);
+  //   const functionName = "0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::CreateStream";
+  //   const functionArguments=[receiver,parsedFlow,parsedDuration];
+  //   console.log('Function Name:', functionName);
+  //   console.log('Function Arguments:', functionArguments);
+  //    return <ContractExecutor functionName={functionName} functionArguments={functionArguments} />
+  // }
   useEffect(() => {
     setReceiver(searchParams.get('receiver')??"");
     setToken(searchParams.get('token')??"Aptos");
@@ -94,8 +98,10 @@ const SinglePage = () => {
           <div className="flex items-center justify-end">
             <div className="text-gray-700 text-lg font-bold mr-2">/ second</div>
           </div>
+          {/* console.log('Function Name:', functionName);
+          console.log('Function Arguments:', functionArguments); */}
           <div className="flex items-center justify-center mt-4">
-            <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={handleStream}>Send Stream</button>
+          <ContractExecutor functionName={functionName} functionArguments={functionArguments} />
           </div>
         </div>
       </div>

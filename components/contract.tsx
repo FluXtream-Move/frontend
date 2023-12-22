@@ -41,7 +41,7 @@ const ContractExecutor = ({ functionName, functionArguments }: { functionName: s
       <Button
         onClick={executeFunction}
         type="primary"
-        style={{ height: '40px', backgroundColor: '#3f67ff', marginTop: '1rem' }}
+        className='bg-blue-500 text-white font-bold mt-1 rounded h-10'
       >
         Send
       </Button>
