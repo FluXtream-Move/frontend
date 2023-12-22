@@ -1,6 +1,7 @@
 'use client';
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -9,6 +10,20 @@ import { SIDENAV_ITEMS } from '@/constants/constants';
 import { SideNavItem } from '@/types/types';
 import { Icon } from '@iconify/react';
 import { motion, useCycle } from 'framer-motion';
+const WalletButtons = dynamic(
+  async () => {
+    const { WalletButtons } = await import("./wallet");
+    return { default: WalletButtons };
+  },
+  {
+    loading: () => (
+      <div className="nes-btn is-primary opacity-50 cursor-not-allowed">
+        Loading...
+      </div>
+    ),
+    ssr: false,
+  }
+);
 
 type MenuItemWithSubMenuProps = {
   item: SideNavItem;
@@ -33,6 +48,7 @@ const sidebar = {
     },
   },
 };
+{/* TODO <WalletButtons /> */}
 
 const HeaderMobile = () => {
   const pathname = usePathname();
@@ -58,11 +74,13 @@ const HeaderMobile = () => {
         variants={variants}
         className="absolute grid w-full gap-3 px-10 py-16"
       >
+        
         {SIDENAV_ITEMS.map((item, idx) => {
           const isLastItem = idx === SIDENAV_ITEMS.length - 1; // Check if it's the last item
-
+          
           return (
             <div key={idx}>
+              
               {item.submenu ? (
                 <MenuItemWithSubMenu item={item} toggleOpen={toggleOpen} />
               ) : (
