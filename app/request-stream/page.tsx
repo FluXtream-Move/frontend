@@ -1,12 +1,25 @@
 "use client"
+import { parse } from 'path';
 import React from 'react'
 import { useState } from 'react';
-
+import {
+    useWallet,
+  } from "@aptos-labs/wallet-adapter-react";
 const Page = () => {
+    const { wallets, connected, disconnect, isLoading, account, network } = useWallet();
+  const accountAddress = account?.address;
     const [receiver, setReceiver] = useState('');
     const [token, setToken] = useState('Aptos');
     const [flow, setFlow] = useState('');
     const [duration , setDuration] = useState('');
+    const handleStream = () => {
+        // Parse flow and duration as u64
+       let parsedFlow = parseFloat(flow);
+       parsedFlow=parsedFlow*1000;
+       const parsedDuration = parseInt(duration, 10);
+       const functionArguments=[account?.address,parsedFlow,parsedDuration];
+       console.log('Function Arguments:', functionArguments);
+     }
     return (
     
         <div className='flex items-center justify-center min-h-screen'>
@@ -59,7 +72,7 @@ const Page = () => {
                 <div className="text-gray-700 text-lg font-bold mr-2">/ second</div>
               </div>
               <div className="flex items-center justify-center mt-4">
-                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" >request payment</button>
+                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={handleStream} >Request payment</button>
               </div>
             </div>
           </div>
