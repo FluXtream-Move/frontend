@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
-import ContractExecutor from '../../components/contract'
+import ContractExecutor from '@/components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 import { useSearchParams } from 'next/navigation'
  
 const SinglePage = () => {
-  const { width, height } = useWindowSize()
+  // const { width, height } = useWindowSize()
   const searchParams = useSearchParams()
   const [receiver, setReceiver] = useState('');
   const [token, setToken] = useState('Aptos');

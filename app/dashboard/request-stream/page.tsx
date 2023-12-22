@@ -32,7 +32,7 @@ const Page = () => {
   
     const WalletButtons = dynamic(
         async () => {
-          const { WalletButtons } = await import("../../components/wallet");
+          const { WalletButtons } = await import("../../../components/wallet");
           return { default: WalletButtons };
         },
         {

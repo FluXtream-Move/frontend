@@ -1,6 +1,6 @@
 import React from 'react'
-import ContractExecutor from '../../components/contract'
-import GetDataFromContract from '../../components/GetDataFromContract'
+import ContractExecutor from '@/components/contract'
+import GetDataFromContract from '@/components/GetDataFromContract'
 function page() {
   return (
     <div>
