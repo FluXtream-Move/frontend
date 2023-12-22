@@ -1,16 +1,63 @@
 "use client"
+import { parse } from 'path';
 import React from 'react'
 import { useState } from 'react';
-
+import {
+    useWallet,
+  } from "@aptos-labs/wallet-adapter-react";
+  import QRCode from "react-qr-code";
+  const QRModal = ({ value, onClose }) => {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full flex items-center z-[100] justify-center bg-gray-800 bg-opacity-50">
+        <div className="bg-white rounded-lg p-8 max-w-md">
+          <div className="flex justify-end">
+            <button
+              onClick={onClose}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
+              Close
+            </button>
+          </div>
+          <div className="flex justify-center mt-4">
+            <QRCode size={256} value={value} />
+          </div>
+        </div>
+      </div>
+    );
+  };
 const Page = () => {
+    const [showQR, setShowQR] = useState(false);
+    // ... other state variables and functions
+  
+    
+  
+    const handleCloseQR = () => {
+      setShowQR(false); // Close QR code modal
+    };
+    const { wallets, connected, disconnect, isLoading, account, network } = useWallet();
+  const accountAddress = account?.address;
     const [receiver, setReceiver] = useState('');
     const [token, setToken] = useState('Aptos');
     const [flow, setFlow] = useState('');
     const [duration , setDuration] = useState('');
+    const handleStream = () => {
+        setShowQR(true);
+        // Parse flow and duration as u64
+       let parsedFlow = parseFloat(flow);
+       parsedFlow=parsedFlow*1000;
+       const parsedDuration = parseInt(duration, 10);
+       const functionArguments=[account?.address,parsedFlow,parsedDuration];
+       console.log('Function Arguments:', functionArguments);
+     }
     return (
-    
-        <div className='flex items-center justify-center min-h-screen'>
+    <>
+    {showQR && (
+        <QRModal value="https://web.whatsapp.com/" onClose={handleCloseQR} />
+      )}
+        <div className='absolute flex items-center justify-center min-h-screen'>
+          <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "100%" }}>
           
+</div>
           <div className=" text-black shadow-lg  rounded-xl  overflow-hidden p-7 max-w-md w-full relative">
             <button className="inline-flex  items-center justify-center box-border border-0 m-0 cursor-pointer select-none align-top appearance-none text-blue-600 bg-blue-100 rounded-lg transition-all duration-300 ease-in-out p-2 mr-2 mb-8 self-start pointer-events-none">Request Stream</button>
             <div className="absolute top-0 right-7">
@@ -41,7 +88,7 @@ const Page = () => {
                 placeholder="0.00"
                 value={flow}
                 onChange={(e) => setFlow(e.target.value)}
-              />
+                />
                 </div>
               </div>
               <div className="flex flex-col">
@@ -53,17 +100,18 @@ const Page = () => {
                 placeholder="Duration in Seconds"
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-              />
+                />
               </div>
               <div className="flex items-center justify-end">
                 <div className="text-gray-700 text-lg font-bold mr-2">/ second</div>
               </div>
               <div className="flex items-center justify-center mt-4">
-                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" >request payment</button>
+                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={handleStream} >Request payment</button>
               </div>
             </div>
           </div>
         </div>
+                </>
       );
 }
 export default Page;
