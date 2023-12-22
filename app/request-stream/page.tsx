@@ -7,7 +7,7 @@ import {
     useWallet,
   } from "@aptos-labs/wallet-adapter-react";
   import QRCode from "react-qr-code";
-  const QRModal = ({ value, onClose }) => {
+  const QRModal = ({ value, onClose }: { value: string, onClose: () => void }) => {
     return (
       <div className="fixed top-0 left-0 w-full h-full flex items-center z-[100] justify-center bg-gray-800 bg-opacity-50">
         <div className="bg-white rounded-lg p-8 max-w-md">
