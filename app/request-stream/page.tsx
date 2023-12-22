@@ -40,6 +40,7 @@ const Page = () => {
     const [token, setToken] = useState('Aptos');
     const [flow, setFlow] = useState('');
     const [duration , setDuration] = useState('');
+    const [qrvalue, setQRValue] = useState('');
     const handleStream = () => {
         setShowQR(true);
         // Parse flow and duration as u64
@@ -48,11 +49,13 @@ const Page = () => {
        const parsedDuration = parseInt(duration, 10);
        const functionArguments=[account?.address,parsedFlow,parsedDuration];
        console.log('Function Arguments:', functionArguments);
+       const websiteaddress="http://fluxtream.co/single?receiver="+account?.address+"&flow="+parsedFlow+"&duration="+parsedDuration;
+       setQRValue(websiteaddress)
      }
     return (
     <>
     {showQR && (
-        <QRModal value="https://web.whatsapp.com/" onClose={handleCloseQR} />
+        <QRModal value={qrvalue} onClose={handleCloseQR} />
       )}
         <div className='absolute flex items-center justify-center min-h-screen'>
           <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "100%" }}>
