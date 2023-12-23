@@ -46,8 +46,7 @@ const Header = () => {
             href="/"
             className="flex flex-row space-x-3 items-center justify-center md:hidden"
           >
-            <Image src={Logo} width="40" height="40" alt="Logo Image" />
-            <span className="font-bold text-xl flex ">FluXstreme</span>
+            <span className="font-bold text-xl flex ">FluXtream</span>
           </Link>
         </div>
 
