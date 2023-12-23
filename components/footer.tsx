@@ -9,7 +9,7 @@ export default function Footer() {
                         A project by{" "}
                         <a
                             className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-                            href="https://twitter.com/"
+                            href="https://linktr.ee/"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -18,14 +18,14 @@ export default function Footer() {
                     </p>
                 </div>
                 <div className="flex flex-row">
-                    <a className="items-center px-6 py-4">
+                    <a className="items-center px-6 py-4" href="https://github.com/FluXtream-Move">
                         <Github/>
                     </a>
                     <a className="items-center pr-6 py-4">
                         <Twitter/>
                     </a>
                     <a
-                        href="https://www.github.com"
+                        href="https://linktr.ee/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center space-x-2 rounded-lg border border-gray-200 bg-white px-6 py-2 transition-all duration-75 hover:scale-105"
