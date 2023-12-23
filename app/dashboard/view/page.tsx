@@ -32,7 +32,7 @@ function Page() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setNumber((prevNumber) => prevNumber + 2);
+      setNumber((prevNumber) => prevNumber + 0.001);
     }, 1000);
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
@@ -159,7 +159,7 @@ function Page() {
       {/* Flowrate per Month Section */}
       <div className='flex flex-col items-center gap-4 my-2'>
         <div className='flex items-center gap-4 p-4'>
-          <h6 className='text-lg font-semibold -m-2'>2 APTOSx</h6>
+          <h6 className='text-lg font-semibold -m-2'>0.001 APTOSx</h6>
           <span className="text-sm text-gray-500">per sec</span>
         </div>
         
@@ -179,7 +179,7 @@ function Page() {
               <p className="text-sm font-medium text-gray-600">
                 Buffer:
               </p>
-              <h6 className="text-sm font-medium">2.0833 APTOSx</h6>
+              <h6 className="text-sm font-medium">3.61 APTOSx</h6>
             </div>
             <div className='flex items-center gap-2 p-2'>
               <p className="text-sm font-medium text-gray-600">
