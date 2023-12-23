@@ -23,7 +23,7 @@ const SideNav = () => {
                 className="w-auto h-auto dark:invert"
             ></Image>
           </Link>
-        <div className="flex flex-col">
+        <div className="flex flex-col font-poppins">
           {SIDENAV_ITEMS.map((item, idx) => {
             return <MenuItem key={idx} item={item} />;
           })}

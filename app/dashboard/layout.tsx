@@ -29,7 +29,7 @@ export default function RootLayout({
             <div className="flex">
                 <WalletProvider>
                     <SideNav />
-                    <main className="flex-1">
+                    <main className="flex-1 font-poppins">
                         <MarginWidthWrapper>
 
                             <Header />
