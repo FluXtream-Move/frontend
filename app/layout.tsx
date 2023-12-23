@@ -1,49 +1,33 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import '../styles/globals.css'
-import { WalletProvider } from "../context/WalletProvider";
-import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
-
-
+import './globals.css'
+import {Analytics} from "@vercel/analytics/react";
+import React, {Suspense} from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
-import Header from '@/components/header'
-import HeaderMobile from '@/components/header-mobile'
-import MarginWidthWrapper from '@/components/margin-width-wrapper'
-import PageWrapper from '@/components/page-wrapper'
-import SideNav from '@/components/side-nav'
-import NotFound from '../components/not-found'
-
-export const metadata: Metadata = {
-  title: 'FluXtream',
-  description: 'Asset Streaming Protocol',
-}
-
+export const metadata = {
+  title: "FluXtream - streaming crypto",
+  description:
+      "FluXtream, a platform to send and receive Aptos through streams.",
+  // metadataBase: new URL(""),
+  // themeColor: "#FFFFFF",
+};
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                     children,
+                                   }: {
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`bg-white${inter.className}`}>
-        <div className="flex">
-        <WalletProvider>
-          <SideNav />
-          <main className="flex-1">
-            <MarginWidthWrapper>
-            
-              <Header />
-              <HeaderMobile />
-              <PageWrapper>{children}</PageWrapper>
-             
-            </MarginWidthWrapper>
+      <html lang="en">
+      <body className={inter.className}>
+      <Suspense >
+          <main className="">
+            {children}
           </main>
-          </WalletProvider>
-        </div>
-        
+      </Suspense>
+      <Analytics />
       </body>
-    </html>
-  );
+      </html>
+  )
 }

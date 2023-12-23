@@ -1,7 +1,7 @@
 import React from 'react'
-import ContractExecutor from '../../components/contract'
-import GetDataFromContract from '../../components/GetDataFromContract'
-import Testimonial from '../../components/testimonial'
+import ContractExecutor from '@/components/contract'
+import GetDataFromContract from '@/components/GetDataFromContract'
+import Testimonial from '@/components/testimonial'
 function page() {
   return (
     <div>

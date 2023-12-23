@@ -36,48 +36,50 @@ function Dashboard() {
 
   return (
     <>
+      <div>
           <h2 className="text-2xl font-bold mb-4">Flux Tokens</h2>
-    <div className="mx-auto max-w-[1100px] p-4 bg-white text-gray-700 shadow-md border border-gray-300 rounded-lg overflow-x-auto transition-none">
-      
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="px-6 py-3">
-              Asset
-            </th>
-            <th scope="col" className="px-6 py-3">
-              End Time
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Net Flow
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Receiver Address
-            </th>
-            <th scope="col" className="px-6 py-3">
-              <span className="sr-only">Edit</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            
-            <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Aptos
-              </th>
-              <td className="px-6 py-4">{item.end_time}</td>
-              <td className="px-6 py-4">{item.flow_rate}</td>
-              <td className="px-6 py-4">{item.receiver}</td>
-              <td className="px-6 py-4 text-right">
-                <div className="font-medium text-blue-600 dark:text-blue-500 hover:focus">Stop</div>
-              </td>
-            </tr>
-            
-          ))}
-        </tbody>
-      </table>
-    </div>
+          <div className="mx-auto max-w-[1100px] p-4 bg-white text-gray-700 shadow-md border border-gray-300 rounded-lg overflow-x-auto transition-none">
+
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    Asset
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    End Time
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Net Flow
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Receiver Address
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    <span className="sr-only">Edit</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+
+                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Aptos
+                    </th>
+                    <td className="px-6 py-4">{item.end_time}</td>
+                    <td className="px-6 py-4">{item.flow_rate}</td>
+                    <td className="px-6 py-4">{item.receiver}</td>
+                    <td className="px-6 py-4 text-right">
+                      <div className="font-medium text-blue-600 dark:text-blue-500 hover:focus">Stop</div>
+                    </td>
+                  </tr>
+
+                ))}
+              </tbody>
+            </table>
+          </div>
+      </div>
     </>
   );
 }
