@@ -128,7 +128,7 @@ function Page() {
       {/* Flowrate per Month Section */}
       <div className='flex flex-col items-center gap-4 my-2'>
         <div className='flex items-center gap-4 p-4'>
-          <h6 className='text-lg font-semibold -m-2'>1521 fDAIx</h6>
+          <h6 className='text-lg font-semibold -m-2'>1521 APTOSx</h6>
           <span className="text-sm text-gray-500">per month</span>
         </div>
       </div>
@@ -197,12 +197,16 @@ function Page() {
           <Icon icon="lucide:copy" width="20" height="20" />
           {/* Copy Icon */}
         </button>
+        <Link href="https://twitter.com/home" target="_blank">
         <div>
           <img src="/twitter.svg" alt="Twitter logo" className="w-8 h-8" />
         </div>
+        </Link>
+        <Link href="https://t.me/+WMqv8bvhNZk5NGY1" target="_blank">
         <div>
           <img src="/telegram.svg" alt="Telegram logo" className="w-8 h-8" />
         </div>
+        </Link>
       </div>
     </div>
     </>

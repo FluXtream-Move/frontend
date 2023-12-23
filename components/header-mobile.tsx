@@ -103,6 +103,7 @@ const HeaderMobile = () => {
             </div>
           );
         })}
+        
       </motion.ul>
       <MenuToggle toggle={toggleOpen} />
     </motion.nav>
@@ -159,6 +160,7 @@ const MenuItem = ({
   children?: ReactNode;
 }) => {
   return (
+    
     <motion.li variants={MenuItemVariants} className={className}>
       {children}
     </motion.li>
@@ -179,6 +181,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemWithSubMenuProps> = ({
           className="flex w-full text-2xl"
           onClick={() => setSubMenuOpen(!subMenuOpen)}
         >
+          
           <div className="flex flex-row justify-between w-full items-center">
             <span
               className={`${pathname && pathname.includes(item.path) ? 'font-bold' : ''}`}
