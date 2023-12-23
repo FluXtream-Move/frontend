@@ -17,13 +17,13 @@ const SideNav = () => {
           <Link href="/" className="flex items-center font-display text-2xl mx-5">
             <Image
                 src="/FluXtream_logo_bw_big.png"
-                alt="Precedent logo"
+                alt="FluXtream logo"
                 width="60"
                 height="30"
                 className="w-auto h-auto dark:invert"
             ></Image>
           </Link>
-        <div className="flex flex-col space-y-2  md:px-6 ">
+        <div className="flex flex-col">
           {SIDENAV_ITEMS.map((item, idx) => {
             return <MenuItem key={idx} item={item} />;
           })}

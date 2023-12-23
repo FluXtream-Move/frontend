@@ -4,7 +4,6 @@ import React, { ReactNode } from 'react';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import { useState, useEffect } from 'react';
 import GetData from '../../components/getdata';
-import Link from 'next/link';
 
 function Dashboard() {
   const { account } = useWallet();
@@ -35,7 +34,6 @@ function Dashboard() {
   }, [account]);
 
   return (
-    <>
       <div>
           <h2 className="text-2xl font-bold mb-4">Flux Tokens</h2>
           <div className="mx-auto max-w-[1100px] p-4 bg-white text-gray-700 shadow-md border border-gray-300 rounded-lg overflow-x-auto transition-none">
@@ -80,7 +78,6 @@ function Dashboard() {
             </table>
           </div>
       </div>
-    </>
   );
 }
 
