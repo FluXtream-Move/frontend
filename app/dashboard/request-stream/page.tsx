@@ -9,7 +9,7 @@ import {
   import QRCode from "react-qr-code";
   const QRModal = ({ value, onClose }: { value: string, onClose: () => void }) => {
     return (
-      <div className="fixed top-0 left-0 w-full h-full flex items-center z-[100] justify-center bg-gray-800 bg-opacity-50">
+      <div className="fixed w-full h-full flex items-center z-[100] justify-center bg-gray-800 bg-opacity-50">
         <div className="bg-white rounded-lg p-8 max-w-md">
           <div className="flex justify-end">
             <button
@@ -68,13 +68,12 @@ const Page = () => {
        setQRValue(websiteaddress)
      }
     return (
-    <>
+    <div className='min-h-screen flex items-center justify-center'>
     {showQR && (
         <QRModal value={qrvalue} onClose={handleCloseQR} />
       )}
         <div className='absolute flex items-center justify-center min-h-screen'>
-          <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "100%" }}>
-          
+          <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "80%" }}>
 </div>
           <div className=" text-black shadow-lg  rounded-xl  overflow-hidden p-7 max-w-md w-full relative">
             <button className="inline-flex  items-center justify-center box-border border-0 m-0 cursor-pointer select-none align-top appearance-none text-blue-600 bg-blue-100 rounded-lg transition-all duration-300 ease-in-out p-2 mr-2 mb-8 self-start pointer-events-none">Request Stream</button>
@@ -98,7 +97,7 @@ const Page = () => {
                   </div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col">
-                  <label className="ml-2 mb-1 font-medium" htmlFor="flow">Flow Rate (Apt/s)</label>
+                  <label className="ml-2 mb-1 font-medium" htmlFor="flow">Flow Rate(APS)</label>
                   <input
                 className="shadow border rounded py-2 px-3 text-gray-900 focus:outline-none focus:shadow-outline"
                 id="flow"
@@ -133,7 +132,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-                </>
+                </div>
       );
 }
 export default Page;

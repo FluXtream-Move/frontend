@@ -2,14 +2,31 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
-import ContractExecutor from '@/components/contract'
+import ContractExecutor from '../../components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 import { useSearchParams } from 'next/navigation'
+import dynamic from 'next/dynamic';
  
 const SinglePage = () => {
-  // const { width, height } = useWindowSize()
+  const WalletButtons = dynamic(
+    async () => {
+      const { WalletButtons } = await import("../../components/wallet");
+      return { default: WalletButtons };
+    },
+    {
+      loading: () => (
+        <div className="nes-btn is-primary opacity-50 cursor-not-allowed">
+          Loading...
+        </div>
+      ),
+      ssr: false,
+    }
+  );
+  const { wallets, connected, disconnect, isLoading, account, network } = useWallet();
+  const accountAddress = account?.address;
+  const { width, height } = useWindowSize()
   const searchParams = useSearchParams()
   const [receiver, setReceiver] = useState('');
   const [token, setToken] = useState('Aptos');
@@ -101,7 +118,11 @@ const SinglePage = () => {
           {/* console.log('Function Name:', functionName);
           console.log('Function Arguments:', functionArguments); */}
           <div className="flex items-center justify-center mt-4">
-          <ContractExecutor functionName={functionName} functionArguments={functionArguments} />
+          {account?.address ?
+                          <ContractExecutor functionName={functionName} functionArguments={functionArguments} />
+                          :
+                          <WalletButtons />
+                        }
           </div>
         </div>
       </div>
