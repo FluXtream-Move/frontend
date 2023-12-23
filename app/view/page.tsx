@@ -1,10 +1,13 @@
 // Import necessary libraries and icons
 "use client";
 import Image from 'next/image';
+import { useState,useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+// Import the necessary functions from date-fns
+import { format, addMinutes, addHours } from 'date-fns';
 import {
     useWallet,
     WalletReadyState,
@@ -14,8 +17,26 @@ import {
   } from "@aptos-labs/wallet-adapter-react";
 
 function Page() {
+  // Find the element where you want to display the start date
+
+// Get the current date and time
+  const currentDate = new Date();
+  const endDate = addHours(currentDate, 1);
+  // Format the date to match your desired format (e.g., "dd MMM. yyyy hh:mm")
+  const formattedDate = format(currentDate, "dd MMM. yyyy HH:mm");
+  const formattedEndDate = format(endDate, "dd MMM. yyyy HH:mm");
     const { wallets, connected, disconnect, isLoading, account, network } = useWallet();
     const accountAddress = account?.address;
+    const [number, setNumber] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNumber((prevNumber) => prevNumber + 2);
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []); // Empty dependency array ensures this effect runs once on mount
+
   return (
     <>
     <div className="container mx-auto p-4 max-w-2xl">
@@ -59,7 +80,7 @@ function Page() {
               </div>
             </div>
             <div className="flex flex-col items-end">
-              <span className="text-2xl font-semibold">332.84</span>
+              <span className="text-2xl font-semibold">{number}</span>
               <h3 className="m-0 text-xl font-semibold font-walsheim text-green-500">APTOSx</h3>
             </div>
           </div>
@@ -128,8 +149,8 @@ function Page() {
       {/* Flowrate per Month Section */}
       <div className='flex flex-col items-center gap-4 my-2'>
         <div className='flex items-center gap-4 p-4'>
-          <h6 className='text-lg font-semibold -m-2'>1521 APTOSx</h6>
-          <span className="text-sm text-gray-500">per month</span>
+          <h6 className='text-lg font-semibold -m-2'>2 APTOSx</h6>
+          <span className="text-sm text-gray-500">per sec</span>
         </div>
       </div>
 
@@ -141,7 +162,7 @@ function Page() {
               <p className="text-sm font-medium text-gray-600">
                 Start Date:
               </p>
-              <h6 className='text-sm font-medium'>16 Dec. 2023 12:05</h6>
+              <h6 className='text-sm font-medium'>{formattedDate}</h6>
             </div>
             <div className='flex items-center gap-2 p-2'>
               <p className="text-sm font-medium text-gray-600">
@@ -151,7 +172,7 @@ function Page() {
             </div>
             <div className='flex items-center gap-2 p-2'>
               <p className="text-sm font-medium text-gray-600">
-                End Date:
+                End Date:{formattedEndDate}
               </p>
             </div>
           </div>
@@ -171,7 +192,7 @@ function Page() {
               <p className="text-sm font-medium text-gray-600">
                 Projected Liquidation:
               </p>
-              <h6 >7 Mar. 2218 17:58</h6>
+              <h6 >{formattedEndDate}</h6>
             </div>
             <div className='flex items-center gap-2 p-2'>
               <p className="text-sm font-medium text-gray-600">
