@@ -85,7 +85,7 @@ function Page() {
               <h3 className="m-0 text-xl font-semibold font-walsheim text-blue-500">APTOSx</h3>
             </div>
           </div>
-          <Link href="/dashboard">
+          <Link href="/dashboard/payment-done">
           <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
         >
@@ -127,7 +127,7 @@ function Page() {
 
         {/* GIF in between */}
         <div className="flex justify-center my-4 w-1/6">
-          <Image src="/stream-loop.gif" alt="Superfluid stream" height={15} width={150} />
+          <Image src="/stream.gif" alt="Superfluid stream" height={15} width={150} />
         </div>
 
         {/* Receiver */}
