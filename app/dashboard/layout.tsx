@@ -25,21 +25,22 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={`bg-white${inter.className}`}>
-        <div className="flex">
-            <WalletProvider>
-                <SideNav />
-                <main className="flex-1">
-                    <MarginWidthWrapper>
+            <div>
+            <div className="flex">
+                <WalletProvider>
+                    <SideNav />
+                    <main className="flex-1">
+                        <MarginWidthWrapper>
 
-                        <Header />
-                        <HeaderMobile />
-                        <PageWrapper>{children}</PageWrapper>
+                            <Header />
+                            <HeaderMobile />
+                            <PageWrapper>{children}</PageWrapper>
 
-                    </MarginWidthWrapper>
-                </main>
-            </WalletProvider>
-        </div>
-
+                        </MarginWidthWrapper>
+                    </main>
+                </WalletProvider>
+            </div>
+            </div>
         </body>
         </html>
     );

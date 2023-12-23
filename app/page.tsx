@@ -9,6 +9,7 @@ import React from "react";
 export default function Home() {
     return (
         <main>
+            <div>
             <Nav/>
             <div className="flex flex-col w-full h-screen items-center justify-center">
                 <div className="relative min-h-min top-1/3">
@@ -48,6 +49,7 @@ export default function Home() {
                     </div>
                     <Footer />
                 </div>
+            </div>
             </div>
         </main>
     )

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
-import ContractExecutor from '../../components/contract'
+import ContractExecutor from '@/components/contract'
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 const SinglePage = () => {
   const WalletButtons = dynamic(
     async () => {
-      const { WalletButtons } = await import("../../components/wallet");
+      const { WalletButtons } = await import("@/components/wallet");
       return { default: WalletButtons };
     },
     {
