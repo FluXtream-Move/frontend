@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
+import Confetti from 'react-confetti'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 // Import the necessary functions from date-fns
 import { format, addMinutes, addHours } from 'date-fns';
@@ -81,10 +82,18 @@ function Page() {
             </div>
             <div className="flex flex-col items-end">
               <span className="text-2xl font-semibold">{number}</span>
-              <h3 className="m-0 text-xl font-semibold font-walsheim text-green-500">APTOSx</h3>
+              <h3 className="m-0 text-xl font-semibold font-walsheim text-blue-500">APTOSx</h3>
             </div>
           </div>
+          <Link href="/dashboard">
+          <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        >
+          Stop Stream
+        </button>
+        </Link>
         </div>
+        
       </motion.div>
 
       {/* Sender and Receiver Section */}
@@ -142,6 +151,7 @@ function Page() {
               </button>
               </Link>
             </div>
+            
           </div>
         </div>
       </div>
@@ -152,6 +162,7 @@ function Page() {
           <h6 className='text-lg font-semibold -m-2'>2 APTOSx</h6>
           <span className="text-sm text-gray-500">per sec</span>
         </div>
+        
       </div>
 
       {/* Parameter Section */}
@@ -229,6 +240,7 @@ function Page() {
         </div>
         </Link>
       </div>
+      
     </div>
     </>
   );

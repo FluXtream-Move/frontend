@@ -37,7 +37,7 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="lucide:history" width="24" height="24" />,
   },
   {
-    title: 'View Stream',
+    title: 'View Latest Stream',
     path: '/view',
     icon: <Icon icon="lucide:gantt-chart" width="24" height="24" />,
   },
