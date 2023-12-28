@@ -10,7 +10,7 @@ export default function PaymentDone() {
 
     useEffect(() => {
         const redirectTimeout = setTimeout(() => {
-            router.push ('/dashboard/single');
+            router.push ('/single');
         }, 3000);
         return () => clearTimeout(redirectTimeout);
     }, []);

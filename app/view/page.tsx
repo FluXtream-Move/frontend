@@ -44,7 +44,7 @@ function Page() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="box-border">
-        <Link href="/dashboard">
+        <Link href="/">
           <button className="text-gray-700">
             
             <Icon icon="lucide:arrow-left" width="20" height="20" />
@@ -54,7 +54,7 @@ function Page() {
         <div className="flex-1"></div>
         <div className="flex gap-8 items-center">
           <span aria-label="Cancel stream" className="box-border">
-          <Link href="/dashboard">
+          <Link href="/">
             <button className="text-gray-700">
               <Icon icon="lucide:x" width="20" height="20" />
             </button>
@@ -85,7 +85,7 @@ function Page() {
               <h3 className="m-0 text-xl font-semibold font-walsheim text-blue-500">APTOSx</h3>
             </div>
           </div>
-          <Link href="/dashboard/payment-done">
+          <Link href="/payment-done">
           <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
         >

@@ -32,7 +32,7 @@ const Page = () => {
   
     const WalletButtons = dynamic(
         async () => {
-          const { WalletButtons } = await import("../../../components/wallet");
+          const { WalletButtons } = await import("../../components/wallet");
           return { default: WalletButtons };
         },
         {
@@ -64,7 +64,7 @@ const Page = () => {
        const parsedDuration = parseInt(duration, 10);
        const functionArguments=[account?.address,parsedFlow,parsedDuration];
        console.log('Function Arguments:', functionArguments);
-       const websiteaddress="http://fluxtream.co/dashboard/single?receiver="+account?.address+"&flow="+parsedFlow+"&duration="+parsedDuration;
+       const websiteaddress="http://fluxtream.co/single?receiver="+account?.address+"&flow="+parsedFlow+"&duration="+parsedDuration;
        setQRValue(websiteaddress)
      }
     return (

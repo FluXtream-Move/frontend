@@ -1,56 +1,84 @@
-import Nav from "@/components/nav";
-import CardStack from "@/components/card";
-import FallingObjectsCanvas from "@/components/stream";
-import {Chip} from "@nextui-org/react";
-import DashboardCard from "@/components/dashboardCard";
-import Footer from "@/components/footer";
-import React from "react";
+"use client"
+// Import necessary libraries and icons
+import React, { ReactNode } from 'react';
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
+import { useState, useEffect } from 'react';
+import GetData from '../components/getdata';
 
-export default function Home() {
-    return (
-        <main>
-            <div>
-            <Nav/>
-            <div className="flex flex-col w-full h-screen items-center justify-center">
-                <div className="relative min-h-min top-1/3">
-                    <div className="z-10 absolute left-1/2 transform -translate-x-1/2 bg-white dark:bg-black">
-                        <h1
-                            className="animate-fade-up text-center text-4xl font-bold tracking-[-0.02em]
-                          drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem] font-poppins"
-                            style={{animationDelay: "0.15s", animationFillMode: "forwards"}}
-                        >
-                            Introducing FluXtream
-                        </h1>
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2">
-                        <FallingObjectsCanvas height={160}/>
-                    </div>
-                </div>
-                <div className="relative h-full w-full flex flex-col top-full dark:bg-black">
-                    <div className="mb-24">
-                        <h1 className="font-poppins text-6xl text-center text-black dark:text-white p-24">
-                            Good-bye to traditional <br/> payment hassle.
-                        </h1>
-                        <div className="flex justify-center">
-                            <CardStack />
-                        </div>
-                    </div>
-                    <div className="flex flex-col w-full h-full items-center justify-center dark:bg-black pt-24">
-                        <Chip className="dark:text-white" variant="dot">
-                            Dashboard
-                        </Chip>
-                        <h1 className="font-poppins text-6xl text-center text-black dark:text-white p-12">
-                            All your streams at one place.
-                        </h1>
-                        <DashboardCard />
-                    </div>
-                    <div>
+function Dashboard() {
+  const { account } = useWallet();
+  const fetchData = GetData({
+    functionName: "0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100::test19::getListOfRecieveStreams",
+    functionArguments: ["0xcfb4348624dc4c16cbdac455e7302e7b2a7b9f7402627405df0842a04c467100"]
+  });
 
-                    </div>
-                    <Footer />
-                </div>
-            </div>
-            </div>
-        </main>
-    )
+  const [data, setData] = useState<{
+    flow_rate: string;
+    receiver: string;
+    end_time: string;
+  }[]>([]);
+
+  useEffect(() => {
+    const fetchDataAndPrint = async () => {
+      if (!account) return;
+
+      const result = await fetchData();
+      console.log("Data from fetchData:", result);
+      if (Array.isArray(result) && result.length > 0 && Array.isArray(result[0])) {
+        setData(result[0]);
+      }
+      console.log("Data from state:", data);
+    };
+
+    fetchDataAndPrint(); // Call the function
+  }, [account]);
+
+  return (
+      <div>
+          <h2 className="text-2xl font-bold mb-4">Flux Tokens</h2>
+          <div className="mx-auto max-w-[1100px] p-4 bg-white text-gray-700 shadow-md border border-gray-300 rounded-lg overflow-x-auto transition-none">
+
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    Asset
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    End Time
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Net Flow
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Receiver Address
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    <span className="sr-only">Edit</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+
+                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Aptos
+                    </th>
+                    <td className="px-6 py-4">{item.end_time}</td>
+                    <td className="px-6 py-4">{item.flow_rate}</td>
+                    <td className="px-6 py-4">{item.receiver}</td>
+                    <td className="px-6 py-4 text-right">
+                      <div className="font-medium text-blue-600 dark:text-blue-500 hover:focus">Stop</div>
+                    </td>
+                  </tr>
+
+                ))}
+              </tbody>
+            </table>
+          </div>
+      </div>
+  );
 }
+
+export default Dashboard;

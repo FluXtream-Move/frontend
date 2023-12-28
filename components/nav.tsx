@@ -27,7 +27,7 @@ export default function Nav() {
                         ></Image>
                     </Link>
                     <div>
-                        <Link href="/dashboard">
+                        <Link href="/">
                             <button
                                 className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all
                                 hover:bg-white hover:text-black dark:bg-white dark:border-white dark:text-black
